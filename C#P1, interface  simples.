@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
+using System.Linq;
+using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace C_programs
+{
+    internal class Program
+    {
+        enum op {edit = 1, start, delet }
+
+        static void Main(string[] args)
+        {
+            string selec2 = "";
+            bool v = true;
+            while (v)
+            {
+                Console.WriteLine("Selecione uma das funções abaixo:");
+                Console.WriteLine("1-Edit\n2-Start\n3-Delet\n");
+
+                int selec = int.Parse(Console.ReadLine());
+                op opção = (op)selec;
+
+                switch (opção)
+                {
+                    case op.start:
+                        if (!string.IsNullOrEmpty(selec2))
+                        {
+                            Console.WriteLine($"{selec2}");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Não a nada aqui, use o edit para adicionar algo.");
+                        }
+                        break;
+                    case op.edit:
+
+                        Console.WriteLine($"Escreva algo para ser exibido no start:");
+                        selec2 = Console.ReadLine();
+                        Console.WriteLine($"O {selec2} foi salvo.\n");
+                        break;  
+                    case op.delet:
+                        Console.WriteLine("O programa vai encerar.");
+                        v = false;
+                        break;
+                }
+                Console.WriteLine( );
+                }
+            }
+
+
+        }
+    }
